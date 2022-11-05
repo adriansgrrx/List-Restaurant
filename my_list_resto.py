@@ -106,7 +106,7 @@ def main():
 
 while True:
     main()
-    q = str(input("\n******************************************************\nDo you want to try again? [y/n]: ")).lower()
+    q = str(input("\n******************************************************\nDo you want to make another request? [y/n]: ")).lower()
     if q == "y":
         main()
     elif q == "n":
