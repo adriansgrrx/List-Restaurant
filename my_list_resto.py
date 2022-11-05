@@ -27,8 +27,11 @@
 # The element has been deleted
 # This is the new array: Array: [1, 4, 3, 4, 5, 6 ,2 ,56, 200]
 
-my_list_menu = [100, 250, 318, 400, 20, 69, 28, 8, 2003, 12] #item
-print("List's items for today: ", my_list_menu, "\nCommands:\n"
+print("*****************************************\nWelcome to the List Resto!\nFeel free to modify our list anytime!\n*****************************************")
+
+def main():
+    my_list_menu = [100, 250, 318, 400, 20, 69, 28, 8, 2003, 12] #item
+    print("List's items for today: ", my_list_menu, "\nCommands:\n"
         "   0 -> Know the index of an item\n" # index()
         "   1 -> Get the length of the list\n" # len()
         "   2 -> Insert an item on the list\n" # .insert()
@@ -42,55 +45,75 @@ print("List's items for today: ", my_list_menu, "\nCommands:\n"
         "   10 -> Get the smallest number on the list\n" # .min()
         "   11 -> Get the largest number on the list\n" # .max()
         ) 
+    user_req = int(input("******************************************************\nNOTE: If you do not know the index of an item,\nyou can first try pressing \"0\".\n\nEnter your request [1-11]: "))
+    try:
+        if user_req == 0:
+            list_index = my_list_menu.index(int(input("Enter the item: ")))
+            print(f"Item index: {list_index}")
 
-user_req = int(input("NOTE: If you do not know the index of an item,\nyou can first try pressing \"0\".\n\nEnter your request [1-11]: "))
-if user_req == 0:
-    list_index = my_list_menu.index(int(input("Enter the item: ")))
-    print(f"Item index: {list_index}")
+        elif user_req == 1:
+            list_length = len(my_list_menu)
+            print(f"List length: {list_length}")
 
-elif user_req == 1:
-    list_length = len(my_list_menu)
-    print(f"List length: {list_length}")
+        elif user_req == 2:
+            my_list_menu.insert(int(input("Enter the index: ")), int(input("Enter the number you want to insert: ")))
+            print(f"Updated list: {my_list_menu}")
 
-elif user_req == 2:
-    my_list_menu.insert(int(input("Enter the index: ")),int(input("Enter the number you want to insert: ")))
-    print(f"Updated list: {my_list_menu}")
+        elif user_req == 3:
+            my_list_menu.remove(int(input("Enter the item you want to remove: ")))
+            print(f"Updated list: {my_list_menu}")
 
-elif user_req == 3:
-    my_list_menu.remove(int(input("Enter the item you want to remove: ")))
-    print(f"Updated list: {my_list_menu}")
+        elif user_req == 4:
+            my_list_menu.sort()
+            print(f"Updated list: {my_list_menu}")
 
-elif user_req == 4:
-    my_list_menu.sort()
-    print(f"Updated list: {my_list_menu}")
+        elif user_req == 5:
+            my_list_menu.sort(reverse=True)
+            print(f"Updated list: {my_list_menu}")
 
-elif user_req == 5:
-    my_list_menu.sort(reverse=True)
-    print(f"Updated list: {my_list_menu}")
+        elif user_req == 6:
+            list_select = my_list_menu[int(input("Enter the index: "))]
+            print(f"Selected item: {list_select}")
 
-elif user_req == 6:
-    list_select = my_list_menu[int(input("Enter the index: "))]
-    print(f"Selected item: {list_select}")
+        elif user_req == 7:
+            index = int(input("Enter the index: "))
+            item = int(input("Enter the new item: "))
+            my_list_menu[index] = item
+            print(f"Updated list: {my_list_menu}")
 
-elif user_req == 7:
-    index = int(input("Enter the index: "))
-    item = int(input("Enter the new item: "))
-    my_list_menu[index] = item
-    print(f"Updated list: {my_list_menu}")
+        elif user_req == 8:
+            list_pop = my_list_menu.pop(int(input("Enter the index: ")))
+            print(f"You selected the item: {list_pop}")
+            print(f"Updated list: {my_list_menu}")
 
-elif user_req == 8:
-    list_pop = my_list_menu.pop(int(input("Enter the index: ")))
-    print(f"You selected the item: {list_pop}")
-    print(f"Updated list: {my_list_menu}")
+        elif user_req == 9:
+            list_sum = sum(my_list_menu)
+            print(f"The sum of the list is {list_sum}")
 
-elif user_req == 9:
-    list_sum = sum(my_list_menu)
-    print(f"The sum of the list is {list_sum}")
+        elif user_req == 10:
+            list_min = min(my_list_menu)
+            print(f"The smallest number on the list is {list_min}")
 
-elif user_req == 10:
-    list_min = min(my_list_menu)
-    print(f"The smallest number on the list is {list_min}")
+        elif user_req == 11:
+            list_max = max(my_list_menu)
+            print(f"The largest number on the list is {list_max}")
+        
+        else:
+            print("Your input is OUT OF COMMAND'S RANGE.")
+    except IndexError:
+        # if ValueError:
+        #     print("Enter ONLY integers")
+        # elif IndexError:
+            print("Your input is OUT OF RANGE")
 
-elif user_req == 11:
-    list_max = max(my_list_menu)
-    print(f"The largest number on the list is {list_max}")
+repeat = False
+while repeat == False :
+    main()
+    q = input("\n******************************************************\nDo you want to try again? [y/n]: ").lower()
+    if q == "y":
+        repeat == True
+        main()
+    elif q == "n":
+        break;
+    else: 
+        print("Please enter y or n ONLY.")
