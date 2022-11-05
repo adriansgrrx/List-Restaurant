@@ -30,23 +30,24 @@
 print("*****************************************\nWelcome to the List Resto!\nFeel free to modify our list anytime!\n*****************************************")
 
 def main():
-    my_list_menu = [100, 250, 318, 400, 20, 69, 28, 8, 2003, 12] #item
-    print("List's items for today: ", my_list_menu, "\nCommands:\n"
-        "   0 -> Know the index of an item\n" # index()
-        "   1 -> Get the length of the list\n" # len()
-        "   2 -> Insert an item on the list\n" # .insert()
-        "   3 -> Remove an item on the list\n" # .remove()
-        "   4 -> Sort the items in ascending order\n" # .sort()
-        "   5 -> Sort the items in descending order\n" # .sort(,reverse=True)
-        "   6 -> Select one item on the list\n" # my_list_menu[int(input("Enter the index: "))]
-        "   7 -> Modify an item on the list\n" # my_list_menu[index] = num
-        "   8 -> Select an item then remove it from the list\n" # .pop()
-        "   9 -> Calculate the summation of the whole list\n" # .sum()
-        "   10 -> Get the smallest number on the list\n" # .min()
-        "   11 -> Get the largest number on the list\n" # .max()
-        ) 
-    user_req = int(input("******************************************************\nNOTE: If you do not know the index of an item,\nyou can first try pressing \"0\".\n\nEnter your request [1-11]: "))
     try:
+        my_list_menu = [100, 250, 318, 400, 20, 69, 28, 8, 2003, 12] #item
+        print("List's items for today: ", my_list_menu, "\nCommands:\n"
+            "   0 -> Know the index of an item\n" # index()
+            "   1 -> Get the length of the list\n" # len()
+            "   2 -> Insert an item on the list\n" # .insert()
+            "   3 -> Remove an item on the list\n" # .remove()
+            "   4 -> Sort the items in ascending order\n" # .sort()
+            "   5 -> Sort the items in descending order\n" # .sort(,reverse=True)
+            "   6 -> Select one item on the list\n" # my_list_menu[int(input("Enter the index: "))]
+            "   7 -> Modify an item on the list\n" # my_list_menu[index] = num
+            "   8 -> Select an item then remove it from the list\n" # .pop()
+            "   9 -> Calculate the summation of the whole list\n" # .sum()
+            "   10 -> Get the smallest number on the list\n" # .min()
+            "   11 -> Get the largest number on the list\n" # .max()
+            ) 
+
+        user_req = int(input("******************************************************\nNOTE: If you do not know the index of an item,\nyou can first try pressing \"0\".\n\nEnter your request [1-11]: "))
         if user_req == 0:
             list_index = my_list_menu.index(int(input("Enter the item: ")))
             print(f"Item index: {list_index}")
@@ -99,21 +100,17 @@ def main():
             print(f"The largest number on the list is {list_max}")
         
         else:
-            print("Your input is OUT OF COMMAND'S RANGE.")
-    except IndexError:
-        # if ValueError:
-        #     print("Enter ONLY integers")
-        # elif IndexError:
-            print("Your input is OUT OF RANGE")
+            print("Your input is OUT OF COMMAND'S RANGE.\n")
+    except (ValueError):
+        print("Please enter a integers ONLY.")
 
-repeat = False
-while repeat == False :
+while True:
     main()
-    q = input("\n******************************************************\nDo you want to try again? [y/n]: ").lower()
+    q = str(input("\n******************************************************\nDo you want to try again? [y/n]: ")).lower()
     if q == "y":
-        repeat == True
         main()
     elif q == "n":
-        break;
+        break
     else: 
-        print("Please enter y or n ONLY.")
+        print("Please enter y or n ONLY.\n******************************************************\n")
+        break
