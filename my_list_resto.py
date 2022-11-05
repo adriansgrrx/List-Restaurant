@@ -29,6 +29,7 @@
 
 my_list_menu = [100, 250, 318, 400, 20, 69, 28, 8, 2003, 12] #item
 print("List's items for today: ", my_list_menu, "\nCommands:\n"
+        "   0 -> Know the index of an item\n" # index()
         "   1 -> Get the length of the list\n" # len()
         "   2 -> Insert an item on the list\n" # .insert()
         "   3 -> Remove an item on the list\n" # .remove()
@@ -42,8 +43,12 @@ print("List's items for today: ", my_list_menu, "\nCommands:\n"
         "   11 -> Get the largest number on the list\n" # .max()
         ) 
 
-user_req = int(input("Enter your request [1-11]: "))
-if user_req == 1:
+user_req = int(input("NOTE: If you do not know the index of an item,\nyou can first try pressing \"0\".\n\nEnter your request [1-11]: "))
+if user_req == 0:
+    list_index = my_list_menu.index(int(input("Enter the item: ")))
+    print(f"Item index: {list_index}")
+
+elif user_req == 1:
     list_length = len(my_list_menu)
     print(f"List length: {list_length}")
 
@@ -62,3 +67,30 @@ elif user_req == 4:
 elif user_req == 5:
     my_list_menu.sort(reverse=True)
     print(f"Updated list: {my_list_menu}")
+
+elif user_req == 6:
+    list_select = my_list_menu[int(input("Enter the index: "))]
+    print(f"Selected item: {list_select}")
+
+elif user_req == 7:
+    index = int(input("Enter the index: "))
+    item = int(input("Enter the new item: "))
+    my_list_menu[index] = item
+    print(f"Updated list: {my_list_menu}")
+
+elif user_req == 8:
+    list_pop = my_list_menu.pop(int(input("Enter the index: ")))
+    print(f"You selected the item: {list_pop}")
+    print(f"Updated list: {my_list_menu}")
+
+elif user_req == 9:
+    list_sum = sum(my_list_menu)
+    print(f"The sum of the list is {list_sum}")
+
+elif user_req == 10:
+    list_min = min(my_list_menu)
+    print(f"The smallest number on the list is {list_min}")
+
+elif user_req == 11:
+    list_max = max(my_list_menu)
+    print(f"The largest number on the list is {list_max}")
